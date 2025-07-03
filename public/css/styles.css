@@ -1,6 +1,72 @@
-/******* Change Box Model ***************/
+/* ROOT */
+:root{
+  --head-font: "Open Sans", sans-serif;
+  --text-font: "Libertinus Mono", monospace;
+
+  --color1: #01B0D3;
+  --color2: #0E4D64;
+  --color3: #FFFFFF;
+  --color4: #F4A261;
+  --color5: #242333;
+}
+
+
+/* ****** Change Box Model ************** */
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+}
+
+*{
+  font-family: var(--text-font);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header */
+header{
+  width: 100%;
+}
+
+.header-container{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+a.title{
+  font-family: var(--head-font); 
+  font-size: 2rem;
+  color: var(--color2);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+a.myAccount{
+  font-family: var(--head-font);
+  font-size: 1rem;
+  color: #445260;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* nav menu */
+.menu-container{
+  width: 100%;
+  background-color: var(--color5);
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+.menu{
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: var(--color3);
 }
