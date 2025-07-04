@@ -86,10 +86,14 @@ body{
   /* welcome-container */
     .welcome-h1-container h1{
       font-family: var(--head-font);
+      margin-top: 0;
+      padding-top: 15px;
     }
 
     .hero-card-container{
       background-image: url("/images/vehicles/delorean.jpg");
+      background-size: 400px;
+      background-position: center;
       background-repeat: no-repeat;
       width: 100%;
       height: 250px;
@@ -188,3 +192,48 @@ body{
       font-weight: 400;
       font-size: 0.8rem;
     }
+
+/* footer */
+  .copyright{
+    font-family: var(--head-font);
+    font-weight: bold;
+    margin-top: 0;
+    padding-top: 25px;
+  }
+
+
+/* media queries */
+
+@media (min-width: 900px) {
+  body{
+    background: url("/images/site/checkerboard.jpg");
+  }
+
+  #wrapper{
+    background-color: var(--color3);
+    width: 900px;
+    padding: 15px;
+    border: 10px solid var(--color1);
+    border-radius: 10px;
+  }
+
+  .hero-card-container{
+    background-size: 600px 250px;
+  }
+
+  div.container-two-columns{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 50px;
+  }
+
+  .dmc-container{
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .delorean-container {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
