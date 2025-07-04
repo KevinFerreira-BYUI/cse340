@@ -1,14 +1,14 @@
 /* ROOT */
-:root{
-  --head-font: "Open Sans", sans-serif;
-  --text-font: "Libertinus Mono", monospace;
+  :root{
+    --head-font: "Open Sans", sans-serif;
+    --text-font: "Libertinus Mono", monospace;
 
-  --color1: #01B0D3;
-  --color2: #0E4D64;
-  --color3: #FFFFFF;
-  --color4: #F4A261;
-  --color5: #242333;
-}
+    --color1: #01B0D3;
+    --color2: #0E4D64;
+    --color3: #FFFFFF;
+    --color4: #F4A261;
+    --color5: #242333;
+  }
 
 
 /* ****** Change Box Model ************** */
@@ -18,7 +18,7 @@
   box-sizing: border-box;
 }
 
-*{
+body{
   font-family: var(--text-font);
   display: flex;
   flex-direction: column;
@@ -26,47 +26,165 @@
 }
 
 /* Header */
-header{
-  width: 100%;
-}
+  header{
+    width: 100%;
+  }
 
-.header-container{
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
+  .header-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 
-a.title{
-  font-family: var(--head-font); 
-  font-size: 2rem;
-  color: var(--color2);
-  font-weight: bold;
-  text-decoration: none;
-}
+  a.title{
+    font-family: var(--head-font); 
+    font-size: 2rem;
+    color: var(--color2);
+    font-weight: bold;
+    text-decoration: none;
+  }
 
-a.myAccount{
-  font-family: var(--head-font);
-  font-size: 1rem;
-  color: #445260;
-  font-weight: 600;
-  text-decoration: none;
-}
+  a.myAccount{
+    font-family: var(--head-font);
+    font-size: 1rem;
+    color: #445260;
+    font-weight: 600;
+    text-decoration: none;
+  }
 
-/* nav menu */
-.menu-container{
-  width: 100%;
-  background-color: var(--color5);
-  display: flex;
-  justify-content: center;
-  padding: 10px;
-}
+  /* nav menu */
+  .menu-container{
+    width: 100%;
+    background-color: var(--color5);
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
 
-.menu{
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  color: var(--color3);
-}
+  .menu{
+    display: flex;
+    flex-direction: row;
+    gap: 1.3rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--color3);
+  }
+
+  .menu a{
+    color: var(--color3);
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
+
+  .menu a:hover{
+    color: var(--color1);
+  }
+
+/* index */
+
+  /* welcome-container */
+    .welcome-h1-container h1{
+      font-family: var(--head-font);
+    }
+
+    .hero-card-container{
+      background-image: url("/images/vehicles/delorean.jpg");
+      background-repeat: no-repeat;
+      width: 100%;
+      height: 250px;
+    }
+
+    div.card-dmc{
+      background: rgba(128, 128, 128, 0.4);
+      width: 250px;
+      height: 200px;
+      border-radius: 10px;
+    }
+
+    .card-h1-dmc h1{
+      font-family: var(--head-font);
+      padding: 5px;
+    }
+
+    .card-list-dmc li{
+      font-size: 1rem;
+      font-weight: bolder;
+    }
+
+    div.own-btn-container{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .own-btn-container img{
+      width: 150px;
+      border-radius: 10px;
+      border: 1px solid black;
+      box-shadow: 0 0 12px 5px rgba(0,0,0,0.4);
+    }
+
+    .own-btn-container a{
+      width: 150px;
+    }
+
+    .own-btn-container a:hover{
+      transform: translateY(-4%);
+    }
+    
+  /* dmc-container */
+      .dmc-list-container{
+      width: 370px;
+      
+    }
+
+    .dmc-h1-container h1{
+      font-family: var(--head-font);
+    }
+
+    .dmc-list-container li{
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 5px;
+    }
+
+  /* delorean-container" */
+    div.delorean-cards-container{
+      display: grid;
+      grid-template-columns: 150px 150px;
+      gap: 1rem;
+      width: max-content;
+      margin: 0 auto;
+    }
+
+    div.delorean-card{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .delorean-h1-container h1{
+      font-family: var(--head-font);
+    }
+
+    .delorean-card figure{
+      background-color: var(--color2);
+      width: 150px;
+      height: 150px;
+      padding: 15px;
+      border-radius: 10px;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
+      place-items: center;
+      gap: 0.75rem;
+    }
+
+    .delorean-card a{
+      color: var(--color3);
+      font-weight: 400;
+      font-size: 0.8rem;
+    }
