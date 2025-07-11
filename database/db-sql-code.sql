@@ -6,7 +6,7 @@ CREATE TYPE public.account_type AS ENUM
     ('Client', 'Employee', 'Admin');
 
 ALTER TYPE public.account_type
-    OWNER TO cse340_yo44_user;
+    OWNER TO cse340db;
 
 
 CREATE TABLE public.classification (
@@ -237,3 +237,10 @@ VALUES   (
     'White',
     5
   );
+
+  -- Query 4
+UPDATE public.inventory SET inv_description = REPLACE(inv_description, 'the small interiors', 'a huge interior') WHERE inv_id = 10;
+
+-- Query 6
+UPDATE public.inventory SET inv_image = REPLACE(inv_image, '/images', '/images/vehicles'); 
+UPDATE public.inventory SET inv_thumbnail = REPLACE(inv_thumbnail, '/images', '/images/vehicles');  
