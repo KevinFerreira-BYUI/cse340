@@ -21,5 +21,4 @@ SELECT inv_make, inv_model, classification_name FROM public.inventory
 UPDATE public.inventory SET inv_image = REPLACE(inv_image, '/images', '/images/vehicles'); 
 UPDATE public.inventory SET inv_thumbnail = REPLACE(inv_thumbnail, '/images', '/images/vehicles');
 
--- Query 7
 
