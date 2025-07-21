@@ -27,6 +27,7 @@ app.set("layout", "./layouts/layout") // not at views root
 app.use(static)
 app.use("/inv", inventoryRoute)
 
+
 /* ***********************
  * Local Server Information
  * Values from .env (environment) file
