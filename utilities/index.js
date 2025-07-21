@@ -60,22 +60,23 @@ Util.buildClassificationGrid = async function(data){
 
 // build the Inventory Detail view
 Util.buildInventoryDetailsGrid = async function(data) {
-  let gridDetails
+  let gridDetails = ""
   if (data.length > 0){
+    const vehicle = data[0];
     gridDetails += `<section id="inv-details-container">
                       <div class="vehicleImg-details-container">
-                        <img src="${inv_image}">
+                        <img src="${vehicle.inv_image}" alt="${vehicle.inv_make} image">
                       </div>
                       <div class="vehicle-details-container">
-                        <h2>${inv_make} ${inv_model} Details</h2>
-                        <p class="vehicle-price"><strong>Price: ${new Intl.NumberFormat('en-US').format(inv_price)}</strong></p>
-                        <p class="vehicle-description"><strong>Description: </strong>${inv_description}</p>
-                        <p class="vehicle-color><strong>Color: </strong>${inv_color}</p>
-                        <p class="vehcle-miles"><strong>Miles: </strong>${inv_miles}</p>
+                        <h2>${vehicle.inv_make} ${vehicle.inv_model} Details</h2>
+                        <p class="vehicle-price"><strong>Price: ${new Intl.NumberFormat('en-US').format(vehicle.inv_price)}</strong></p>
+                        <p class="vehicle-description"><strong>Description: </strong>${vehicle.inv_description}</p>
+                        <p class="vehicle-color"><strong>Color: </strong>${vehicle.inv_color}</p>
+                        <p class="vehicle-miles"><strong>Miles: </strong>${new Intl.NumberFormat('en-US').format(vehicle.inv_miles)}</p>
                       </div>
                     </section>`
   } else {
-    gridDetails += `<p class="notice">Sorry, no matching ${inv_make} ${inv_model} could be found.</p>`
+    gridDetails += `<p class="notice">Sorry, no matching ${vehicle.inv_make} ${vehicle.inv_model} could be found.</p>`
   }
   return gridDetails
 }
