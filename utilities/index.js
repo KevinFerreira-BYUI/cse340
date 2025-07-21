@@ -24,8 +24,6 @@ Util.getNav = async function (req, res, next) {
   return list
 }
 
-module.exports = Util
-
 
 /* **************************************
 * Build the classification view HTML
@@ -59,4 +57,28 @@ Util.buildClassificationGrid = async function(data){
   }
   return grid
 }
+
+// build the Inventory Detail view
+Util.buildInventoryDetailsGrid = async function(data) {
+  let gridDetails
+  if (data.length > 0){
+    gridDetails += `<section id="inv-details-container">
+                      <div class="vehicleImg-details-container">
+                        <img src="${inv_image}">
+                      </div>
+                      <div class="vehicle-details-container">
+                        <h2>${inv_make} ${inv_model} Details</h2>
+                        <p class="vehicle-price"><strong>Price: ${new Intl.NumberFormat('en-US').format(inv_price)}</strong></p>
+                        <p class="vehicle-description"><strong>Description: </strong>${inv_description}</p>
+                        <p class="vehicle-color><strong>Color: </strong>${inv_color}</p>
+                        <p class="vehcle-miles"><strong>Miles: </strong>${inv_miles}</p>
+                      </div>
+                    </section>`
+  } else {
+    gridDetails += `<p class="notice">Sorry, no matching ${inv_make} ${inv_model} could be found.</p>`
+  }
+  return gridDetails
+}
+
+module.exports = Util
 
