@@ -21,11 +21,21 @@ app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at views root
 
+// index route
+app.get("/", baseController.buildHome)
+
 /* ***********************
  * Routes
  *************************/
 app.use(static)
 app.use("/inv", inventoryRoute)
+
+// Error routes
+const errorRoutes = require("./routes/errorRoute")
+app.use(errorRoutes)
+
+const errorController = require("./controllers/errorControler")
+app.use(errorController.serverError)
 
 
 /* ***********************
@@ -41,6 +51,3 @@ const host = process.env.HOST
 app.listen(port, () => {
   console.log(`app listening on ${host}:${port}`)
 })
-
-// index route
-app.get("/", baseController.buildHome)
