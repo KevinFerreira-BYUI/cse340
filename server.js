@@ -30,14 +30,6 @@ app.get("/", baseController.buildHome)
 app.use(static)
 app.use("/inv", inventoryRoute)
 
-// Error routes
-const errorRoutes = require("./routes/errorRoute")
-app.use(errorRoutes)
-
-const errorController = require("./controllers/errorControler")
-app.use(errorController.serverError)
-
-
 /* ***********************
  * Local Server Information
  * Values from .env (environment) file
@@ -51,3 +43,12 @@ const host = process.env.HOST
 app.listen(port, () => {
   console.log(`app listening on ${host}:${port}`)
 })
+
+// Error routes
+const errorRoutes = require("./routes/errorRoute")
+app.use(errorRoutes)
+
+const errorController = require("./controllers/errorControler")
+app.use(errorController.notFound)
+app.use(errorController.serverError)
+

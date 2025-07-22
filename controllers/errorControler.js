@@ -1,5 +1,5 @@
 
-exports.notFound = (req, res) => {
+const notFound = (req, res) => {
     const error404Body = `
         <section>
             <p class="error-message">Sorry, we appear to have lost that page.</p>
@@ -13,7 +13,7 @@ exports.notFound = (req, res) => {
     })
 }
 
-exports.serverError = (err, req, res, next) => {
+const serverError = (err, req, res, next) => {
     console.error(err.stack)
     const error500Body = `
         <section>
@@ -26,4 +26,10 @@ exports.serverError = (err, req, res, next) => {
     nav: res.locals.nav,
     error500: error500Body
   })
+}
+
+
+module.exports = {
+    serverError,
+    notFound
 }

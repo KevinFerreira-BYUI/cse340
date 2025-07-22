@@ -34,20 +34,21 @@ Util.buildClassificationGrid = async function(data){
     grid = '<ul id="inv-display">'
     data.forEach(vehicle => { 
       grid += '<li>'
+      grid += '<div class="li-content">'
       grid +=  '<a href="../../inv/detail/'+ vehicle.inv_id 
       + '" title="View ' + vehicle.inv_make + ' '+ vehicle.inv_model 
       + 'details"><img src="' + vehicle.inv_thumbnail 
       +'" alt="Image of '+ vehicle.inv_make + ' ' + vehicle.inv_model 
       +' on CSE Motors" /></a>'
       grid += '<div class="namePrice">'
-      grid += '<hr />'
       grid += '<h2>'
-      grid += '<a href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
+      grid += '<a class="t" href="../../inv/detail/' + vehicle.inv_id +'" title="View ' 
       + vehicle.inv_make + ' ' + vehicle.inv_model + ' details">' 
       + vehicle.inv_make + ' ' + vehicle.inv_model + '</a>'
       grid += '</h2>'
       grid += '<span>$' 
       + new Intl.NumberFormat('en-US').format(vehicle.inv_price) + '</span>'
+      grid += '</div>'
       grid += '</div>'
       grid += '</li>'
     })
@@ -65,7 +66,7 @@ Util.buildInventoryDetailsGrid = async function(data) {
     const vehicle = data[0];
     gridDetails += `<section id="inv-details-container">
                       <div class="vehicleImg-details-container">
-                        <img src="${vehicle.inv_image}" alt="${vehicle.inv_make} image">
+                        <img class="vehicle-img" src="${vehicle.inv_image}" alt="${vehicle.inv_make} image">
                       </div>
                       <div class="vehicle-details-container">
                         <h2>${vehicle.inv_make} ${vehicle.inv_model} Details</h2>

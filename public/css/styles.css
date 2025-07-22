@@ -16,6 +16,8 @@
 *:before,
 *:after {
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body{
@@ -52,6 +54,7 @@ body{
     color: var(--color2);
     font-weight: bold;
     text-decoration: none;
+    /* margin-left: 45px; */
   }
 
   a.myAccount{
@@ -127,6 +130,8 @@ body{
     .card-list-dmc li{
       font-size: 1rem;
       font-weight: bolder;
+      margin-left: 40px;
+      padding-bottom: 15px;
     }
 
     div.own-btn-container{
@@ -206,12 +211,85 @@ body{
       font-size: 0.8rem;
     }
 
+    /* grid classification */
+      h1.title-h1{
+        width: 100%;
+        text-align: center;
+        font-family: var(--head-font);
+        font-size: 2rem;
+      }
+
+      ul#inv-display{
+        list-style-type: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #inv-display li{
+        width: 100%;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        
+      }
+
+      div.li-content{
+        width: 250px;
+        height: 250px;
+        border: 1px solid black;
+        display: grid;
+        grid-column: 1fr;
+        grid-template-rows: 1fr 1fr;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      div.li-content a{
+        margin-top: 10px;
+        font-size: 1rem;
+        text-align: center;
+        text-decoration: none;
+        color: var(--color2);
+      }
+
+      div.li-content img{
+        border-radius: 10px;
+        width: 200px;
+        height: 134px;
+      }
+
+      div.li-content span{
+        font-size: 1.1rem;
+        font-weight: bolder;
+      }
+
+      div.namePrice{
+        grid-row: 2/3;
+        text-align: center;
+      }
+
 /* footer */
   .copyright{
     font-family: var(--head-font);
     font-weight: bold;
     margin-top: 0;
     padding-top: 25px;
+  }
+
+  .linkError, .back-to-home{
+    color: var(--color5);
+    font-family: var(--head-font);
+    font-weight: bolder;
+  }
+
+  .linkError:hover, .back-to-home:hover{
+    color: var(--color2);
   }
 
 
@@ -228,7 +306,7 @@ body{
     border: 10px solid var(--color1);
     border-radius: 10px;
   }
-
+  
   .hero-card-container{
     background-size: 600px 250px;
   }
@@ -248,9 +326,73 @@ body{
     grid-column: 1;
     grid-row: 1;
   }
+
+  h1.title-h1{
+    display: flex;
+    text-align: left;
+    margin-top: 20px;
+  }
+
+  ul#inv-display{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  div.li-content:hover{
+    transform: translateY(-2%);
+    cursor: pointer;
+  }
+
+  section#inv-details-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+  }
+
+  div.vehicleImg-details-container{
+    grid-column: 1/2;
+  }
+
+  div.vehicle-details-container{
+    grid-column: 2/3;
+  }
+
+  div.vehicle-details-container h2{
+    font-family: var(--head-font);
+    text-decoration: underline;
+    padding-bottom: 10px;
+  }
+
+  img.vehicle-img{
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 899px) {
+  section#inv-details-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  img.vehicle-img{
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  div.vehicle-details-container{
+    margin-top: 20px;
+  }
+
+  
+}
+
+@media (max-width: 490px) {
 
   body{ 
     padding: 0 8px;
@@ -322,5 +464,10 @@ body{
 
   .copyright{
     font-size: .85rem;                         
+  }
+
+  img.vehicle-img{
+    width: 300px;
+    height: auto;
   }
 }
