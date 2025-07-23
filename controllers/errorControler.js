@@ -1,20 +1,25 @@
+const util = require("../utilities")
 
-const notFound = (req, res) => {
+
+const notFound = async function (req, res) {
+    let nav = await util.getNav()
     const error404Body = `
         <section>
             <p class="error-message">Sorry, we appear to have lost that page.</p>
             <a href="/" class="back-to-home">Back to home</a>
         </section>
     `
+    
     res.status(404).render("error/404", {
         title: "Error 404",
-        nav: res.locals.nav,
+        nav,
         error404: error404Body
     })
 }
 
-const serverError = (err, req, res, next) => {
+const serverError = async function (err, req, res, next){
     console.error(err.stack)
+    let nav = await util.getNav()
     const error500Body = `
         <section>
             <p class="error-message">Oh no! There was a crash. Maybe try a different route?</p>
@@ -23,13 +28,10 @@ const serverError = (err, req, res, next) => {
     `
     res.status(500).render("error/500", {
     title: "Server Error",
-    nav: res.locals.nav,
+    nav,
     error500: error500Body
   })
 }
 
 
-module.exports = {
-    serverError,
-    notFound
-}
+module.exports = {serverError, notFound}
