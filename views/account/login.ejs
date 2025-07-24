@@ -7,13 +7,13 @@
 <% messages() %>
 
 <fieldset>
-    <form action="">
-        <label for="">Email:</label>
-        <input type="text">
+    <form class="form-container" action="" method="post">
+        <label class="label-login" for="email">E-mail:</label>
+        <input class="input-login" type="email" id="email" name="email" required>
 
-        <label for="">Password</label>
-        <input type="password">
+        <label class="label-login" for="password">Senha:</label>
+        <input class="input-login" type="password" id="password" name="password" required>
 
-        <input type="submit">
-    </form>
+        <input class="input-submit-login" type="submit" value="Sing in">
+  </form>
 </fieldset>
