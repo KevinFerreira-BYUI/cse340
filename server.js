@@ -15,6 +15,7 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const session = require("express-session")
 const pool = require("./database/")
 const accountRoute = require("./routes/accountRoute")
+const util = require("./utilities/")
 
 /* ***********************
  * Middleware
@@ -46,14 +47,32 @@ app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at views root
 
 // index route
-app.get("/", baseController.buildHome)
+app.get("/", util.handleErrors(baseController.buildHome))
 
 /* ***********************
  * Routes
  *************************/
 app.use(static)
-app.use("/inv", inventoryRoute)
-app.use("/account", accountRoute)
+app.use("/inv", util.handleErrors(inventoryRoute))
+app.use("/account", util.handleErrors(accountRoute))
+app.use(async (res, req, next) => {
+  next({status: 404, message: "Sorry, we appear to have lost that page."})
+})
+
+/* ***********************
+* Express Error Handler
+* Place after all other middleware
+*************************/  
+app.use(async (err, req, res, next) => {
+  let nav = await util.getNav()
+  console.error(`Error at: "${req.originalUrl}": ${err.message}`)
+  if(err.status == 404){message = err.message} else {message = "Oh no! There was a crash. Maybe try a different route?"}
+  res.render("errors/error", {
+    title: err.status || 'Server Error',
+    nav,
+    message
+  })
+})
 
 /* ***********************
  * Local Server Information
@@ -69,11 +88,5 @@ app.listen(port, () => {
   console.log(`app listening on ${host}:${port}`)
 })
 
-// Error routes
-const errorRoutes = require("./routes/errorRoute")
-app.use(errorRoutes)
 
-const errorController = require("./controllers/errorControler")
-app.use(errorController.notFound)
-app.use(errorController.serverError)
 
