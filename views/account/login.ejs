@@ -5,15 +5,15 @@
 } %>
 
 <% messages() %>
+    
+    <section class="section-form">
+        <form class="form-container" action="" method="post">
+            <label class="label-login" for="email">E-mail:</label>
+            <input class="input-login" type="email" id="email" name="email" required>
 
-<fieldset>
-    <form class="form-container" action="" method="post">
-        <label class="label-login" for="email">E-mail:</label>
-        <input class="input-login" type="email" id="email" name="email" required>
+            <label class="label-login" for="password">Senha:</label>
+            <input class="input-login" type="password" id="password" name="password" required>
 
-        <label class="label-login" for="password">Senha:</label>
-        <input class="input-login" type="password" id="password" name="password" required>
-
-        <input class="input-submit-login" type="submit" value="Sing in">
-  </form>
-</fieldset>
+            <input class="input-submit-login" type="submit" value="Sing in">
+        </form>
+    </section>

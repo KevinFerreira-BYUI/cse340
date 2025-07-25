@@ -276,9 +276,15 @@ body{
       }
     
     /* login view */
+    .section-form{
+      display: flex;
+      justify-content: center;
+    }
+
     .form-container{
       display: flex;
       flex-direction: column;
+      width: 310px;
     }
 
     form{
@@ -291,10 +297,6 @@ body{
       max-width: 425px;
     }
 
-    /* form{
-      
-    } */
-
     .label-login{
       font-family: var(--head-font);
       font-size: 1.2rem;
@@ -303,7 +305,7 @@ body{
     }
 
     .input-login{
-      font-size: 1rem;
+      font-size: 0.8rem;
       font-family: var(--text-font);
       font-weight: 600;
       padding: 5px;
@@ -419,6 +421,15 @@ body{
       border-radius: 10px;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     }
+
+    .form-container{
+      width: 600px;
+    }
+
+    .input-login{
+      font-size: 1rem;
+    }
+
   }
 
   @media (max-width: 899px) {
