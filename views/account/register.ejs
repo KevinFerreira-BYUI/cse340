@@ -1,0 +1,35 @@
+<% if (title) { %>
+<h1 class="title-h1" ><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<%- messages() %>
+    
+    <section class="section-form">
+        <form id="form-register" class="form-container" action="/account/register" method="post">
+            <label class="label-login" for="first name">Fist name:</label>
+            <input class="input-login" type="text" name="account_firstname" required>
+
+            <label class="label-login" for="password">Last Name:</label>
+            <input class="input-login" type="text" name="account_lastname" required>
+
+            <label class="label-login" for="email">E-mail:</label>
+            <input class="input-login" type="email" id="email" name="account_email" required>
+
+            <label class="label-login" for="password">Senha:</label>
+            <input class="input-login" type="password" id="password" name="account_password" required>
+
+            <ul> 
+                <p>Passwords must be:</p>
+                <li>Minimum of 12 characters</li>
+                <li>Inlcude 1 capital letter</li>
+                <li>1 number</li>
+                <li>1 special character</li>
+            </ul>
+
+            <button class="show-password-btn">Show password</button>
+
+            <input class="input-submit-login" type="submit" value="Register">
+        </form>
+    </section>

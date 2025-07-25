@@ -16,6 +16,7 @@ const session = require("express-session")
 const pool = require("./database/")
 const accountRoute = require("./routes/accountRoute")
 const util = require("./utilities/")
+const bodyParser = require("body-parser")
 
 /* ***********************
  * Middleware
@@ -30,6 +31,9 @@ app.use(session({
   saveUninitialized: true,
   name:"sessionId",
 }))
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
 
 // Express Messages Middleware
 app.use(require("connect-flash")())
@@ -54,7 +58,7 @@ app.get("/", util.handleErrors(baseController.buildHome))
  *************************/
 app.use(static)
 app.use("/inv", util.handleErrors(inventoryRoute))
-app.use("/account", util.handleErrors(accountRoute))
+app.use("/account", accountRoute)
 app.use(async (res, req, next) => {
   next({status: 404, message: "Sorry, we appear to have lost that page."})
 })

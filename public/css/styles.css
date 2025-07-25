@@ -37,6 +37,16 @@ body{
 
 @media (max-width: 440px) { body{ background-image: none;} #wrapper{ border: none;} }
 
+#messages{
+  font-size: 1rem;
+}
+
+.notice{
+  color: var(--color5);
+  margin-left: 25px;
+  padding: 10px;
+}
+
 /* Header */
   header{
     width: 100%;
@@ -325,6 +335,41 @@ body{
       cursor: pointer;
       background-color: var(--color1);
       transform: translateY(-4%);
+    }
+
+    .account-question{
+      font-family: var(--head-font);
+      font-size: 0.9rem;
+      color: var(--color3);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .register-link{
+      color: var(--color4);
+    }
+
+    /* Register view */
+    .section-form ul{
+      font-family: var(--head-font);
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--color3);
+      margin: 15px 15px;
+    }
+
+    .show-password-btn{
+      margin-top: 5px;
+      font-family: var(--head-font);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--color5);
+      background-color: var(--color4);
+      border-radius: 10px;
+      border: none;
+      width: 150px;
+      padding: 5px;
+      text-align: center;
     }
 
 /* footer */

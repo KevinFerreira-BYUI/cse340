@@ -4,16 +4,18 @@
     res.redirect('/')
 } %>
 
-<% messages() %>
+<%- messages() %>
     
     <section class="section-form">
         <form class="form-container" action="" method="post">
             <label class="label-login" for="email">E-mail:</label>
             <input class="input-login" type="email" id="email" name="email" required>
 
-            <label class="label-login" for="password">Senha:</label>
+            <label class="label-login" for="password">Password:</label>
             <input class="input-login" type="password" id="password" name="password" required>
 
             <input class="input-submit-login" type="submit" value="Sing in">
+
+            <p class="account-question">Don't have an Account? <span><a class="register-link" href="/account/register">Sing Up</a></span></p>
         </form>
     </section>
