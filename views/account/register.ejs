@@ -5,20 +5,28 @@
 } %>
 
 <%- messages() %>
+
+<% if (errors) { %>
+    <ul class="notice">
+        <% errors.array().forEach(error => { %>
+            <li><%= error.msg %></li>
+        <% }) %>
+    </ul>
+<% } %>
     
     <section class="section-form">
         <form id="form-register" class="form-container" action="/account/register" method="post">
             <label class="label-login" for="first name">Fist name:</label>
-            <input class="input-login" type="text" name="account_firstname" required>
+            <input class="input-login" type="text" id="accountFirstName" name="account_firstname" required value="<%= locals.account_firstname %>">
 
             <label class="label-login" for="password">Last Name:</label>
-            <input class="input-login" type="text" name="account_lastname" required>
+            <input class="input-login" type="text" id="accountLastName" name="account_lastname" required value="<%= locals.account_lastname %>">
 
             <label class="label-login" for="email">E-mail:</label>
-            <input class="input-login" type="email" id="email" name="account_email" required>
+            <input class="input-login" type="email" id="accountEmail" name="account_email" required value="<%= locals.account_email %>">
 
             <label class="label-login" for="password">Senha:</label>
-            <input class="input-login" type="password" id="password" name="account_password" required>
+            <input class="input-login" type="password" id="accountPassword" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
 
             <ul> 
                 <p>Passwords must be:</p>
