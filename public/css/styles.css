@@ -410,6 +410,20 @@ body{
       margin-top: 10px;
     }
 
+    .add-classification-submit{
+      font-family: var(--head-font);
+      font-size: 1.2rem;
+      font-weight: bold;
+      background-color: var(--color4);
+      color: var(--color5);
+      border: none;
+      border-radius: 10px;
+    }
+
+    .add-classification-submit:hover{
+      transform: translateY(-2%);
+      cursor: pointer;
+    }
 
 /* footer */
   .copyright{
