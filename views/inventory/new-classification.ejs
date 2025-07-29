@@ -1,0 +1,18 @@
+<% if (title) { %>
+<h1 class="title-h1"><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<%- messages() %>
+
+<section class="add-classification-container">
+    <form action="/inv/newClassification" method="post">
+        <label class="add-classification-lbl" for="classification name">Classification Name</label>
+
+        <label class="add-classification-lbl" for="rules"><i>Name must be alphabetic characters only.</i></label>
+
+        <input class="add-classification-text" type="text" id="addClassificationId" name="classification_name">
+        <input class="add-classification-submit" type="submit" value="Add Classification">
+    </form>
+</section>

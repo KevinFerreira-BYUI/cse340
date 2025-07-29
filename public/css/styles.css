@@ -372,6 +372,45 @@ body{
       text-align: center;
     }
 
+    /* Management view */
+    .management-container{
+      margin-left: 20px;
+      padding-top: 20px;
+    }
+
+    .management-link-list a{
+      color: var(--color2);
+      font-weight: bolder;
+    }
+
+    .management-link-list a:hover{
+      color: var(--color1);
+    }
+
+    /* Add new classification view */
+    .add-classification-container{
+      display: flex;
+      justify-content: center;
+    }
+
+    .add-classification-container form{
+      height: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .add-classification-lbl{
+      font-family: var(--head-font);
+      color: var(--color3);
+      padding: 5px;
+    }
+
+    .add-classification-text, .add-classification-submit{
+      padding: 5px;
+      margin-top: 10px;
+    }
+
+
 /* footer */
   .copyright{
     font-family: var(--head-font);

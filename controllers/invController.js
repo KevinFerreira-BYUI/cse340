@@ -44,4 +44,29 @@ invCont.buildManagement = async function(req, res, next) {
   })
 }
 
+// build new classification view
+invCont.buildNewClassification = async function(req, res, next) {
+  let nav = await util.getNav()
+  res.render("./inventory/new-classification", {
+    title: "Add New Classification",
+    nav,
+  })
+}
+
+invCont.addNewClassification = async function(req, res) {
+  let nav = await util.getNav()
+  const {classification_name} = req.body
+
+  const addClassResult = await invModel.insertClassification(classification_name)
+
+  if (addClassResult){
+    req.flash(
+      "notice", 
+      `You've registered <i>${classification_name}</i> as a vehicle classification!`
+    )
+
+    res.redirect("/inv/newClassification")
+  }
+}
+
 module.exports = invCont 

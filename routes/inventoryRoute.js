@@ -13,4 +13,13 @@ router.get("/detail/:invId", util.handleErrors(invController.buildInventoryDetai
 // Route to build the management view
 router.get("/", util.handleErrors(invController.buildManagement));
 
+// Route to build new classification view
+router.get("/newClassification", util.handleErrors(invController.buildNewClassification));
+
+router.post(
+    "/newClassification",
+    invController.addNewClassification,
+    util.handleErrors(invController.addNewClassification)
+)
+
 module.exports = router;
