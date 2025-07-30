@@ -21,4 +21,15 @@ SELECT inv_make, inv_model, classification_name FROM public.inventory
 UPDATE public.inventory SET inv_image = REPLACE(inv_image, '/images', '/images/vehicles'); 
 UPDATE public.inventory SET inv_thumbnail = REPLACE(inv_thumbnail, '/images', '/images/vehicles');
 
-
+INSERT INTO inventory ( 
+	inv_make, 
+	inv_model, 
+	inv_year, 
+	inv_description, 
+	inv_image,
+	inv_thumbnail,
+	inv_price,
+	inv_miles,
+	inv_color,
+	classification_id
+) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)

@@ -443,6 +443,12 @@ body{
       padding: 10px 0 10px 0;
     }
 
+    #classificationList{
+      font-family: var(--head-font);
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
     .vehicle-text{
       font-size: 1.2rem;
     }
@@ -452,6 +458,7 @@ body{
       max-width: 300px;
       min-height: 150px;
       max-height: 150px;
+      font-size: 1.1rem;
     }
 
     .submit-vehicle{

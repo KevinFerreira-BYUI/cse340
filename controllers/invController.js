@@ -83,4 +83,43 @@ invCont.buildNewVehicle = async function(req, res) {
   })
 }
 
+invCont.addNewVehicle = async function(req, res) {
+
+  const {
+    classification_id,
+    inv_make, 
+    inv_model,
+    inv_description,  
+    inv_image,
+    inv_thumbnail,     
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color
+    
+  } = req.body
+
+  const addVehicleResult = await invModel.insertNewVehicle(
+    classification_id,
+    inv_make, 
+    inv_model,
+    inv_description,  
+    inv_image,
+    inv_thumbnail,     
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color
+  )
+
+  if (addVehicleResult){
+    req.flash(
+      "notice",
+      "New Vehicle has been added!"
+    )
+  }
+
+  res.redirect("/inv/newVehicle")
+}
+
 module.exports = invCont 

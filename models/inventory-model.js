@@ -63,8 +63,72 @@ async function getExistClasificationName(classification_name) {
     )
     return data.rows
   } catch(error){
-    console.error(`getExistClass ${error}`)
+    console.error(`getExistClasificationName ${error}`)
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryById, insertClassification, getExistClasificationName};
+async function insertNewVehicle(
+  classification_id,
+  inv_make, 
+  inv_model,
+  inv_description,  
+  inv_image,
+  inv_thumbnail,     
+  inv_price,
+  inv_year,
+  inv_miles,
+  inv_color
+) {
+  try{
+    const data = await pool.query(
+      `INSERT INTO inventory ( 
+        classification_id,
+        inv_make, 
+        inv_model,
+        inv_description,  
+        inv_image,
+        inv_thumbnail,     
+        inv_price,
+        inv_year,
+        inv_miles,
+        inv_color ) 
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`,
+      [
+        classification_id,
+        inv_make, 
+        inv_model,
+        inv_description,  
+        inv_image,
+        inv_thumbnail,     
+        inv_price,
+        inv_year,
+        inv_miles,
+        inv_color
+      ]
+    )
+    return data.rows
+  } catch (error){
+    console.error(`insertNewVehicle ${error}`)
+  }
+}
+
+// async function insertClassIdinVehicle(classification_id) {
+//   try{
+//     const data = await pool.query(
+//       `INSERT INTO inventory (classification_id) VALUES ($1)`,
+//       [classification_id]
+//     )
+//     return data.rows
+//   } catch (error){
+//     console.error(`insertClassIdinVehicle: ${error}`)
+//   }
+// }
+
+module.exports = {
+  getClassifications, 
+  getInventoryByClassificationId, 
+  getInventoryById, 
+  insertClassification, 
+  getExistClasificationName,
+  insertNewVehicle
+};
