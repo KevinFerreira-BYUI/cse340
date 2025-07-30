@@ -451,7 +451,17 @@ body{
 
     .vehicle-text{
       font-size: 1.2rem;
+      background-color: var(--color3);
+      border: 1px solid var(--color3);
     }
+
+    /* .vehicle-text:invalid{
+      background-color: rgba(255, 6, 6, 0);
+    }
+
+    .vehicle-text:valid{
+      background-color: rgba(10, 131, 175, 0);
+    } */
 
     textarea#inv_description{
       min-width: 300px;
