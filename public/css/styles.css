@@ -387,7 +387,7 @@ body{
       color: var(--color1);
     }
 
-    /* Add new classification view */
+    /* new classification view */
     .add-classification-container{
       display: flex;
       justify-content: center;
@@ -423,6 +423,51 @@ body{
     .add-classification-submit:hover{
       transform: translateY(-2%);
       cursor: pointer;
+    }
+    
+    /* new vehicle view */
+    .new-vehicle-container{
+      display: flex;
+      justify-content: center;
+    }
+
+    .new-vehicle-container form{
+      display: flex;
+      flex-direction: column;
+    }
+
+    form p, .vehicle-lbl{
+      font-family: var(--head-font);
+      font-size: 1.5rem;
+      color: var(--color3);
+      padding: 10px 0 10px 0;
+    }
+
+    .vehicle-text{
+      font-size: 1.2rem;
+    }
+
+    textarea#inv_description{
+      min-width: 300px;
+      max-width: 300px;
+      min-height: 150px;
+      max-height: 150px;
+    }
+
+    .submit-vehicle{
+      margin-top: 15px;
+      font-family: var(--head-font);
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: var(--color5);
+      background-color: var(--color4);
+      border: none;
+      border-radius: 10px;
+    }
+
+    .submit-vehicle:hover{
+      cursor: pointer;
+      transform: translateY(-2%);
     }
 
 /* footer */

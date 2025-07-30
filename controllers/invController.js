@@ -1,3 +1,4 @@
+const { render } = require("ejs")
 const invModel = require("../models/inventory-model")
 const util = require("../utilities/")
 
@@ -50,11 +51,12 @@ invCont.buildNewClassification = async function(req, res, next) {
   res.render("./inventory/new-classification", {
     title: "Add New Classification",
     nav,
+    errors: null
   })
 }
 
+// Add the new classification
 invCont.addNewClassification = async function(req, res) {
-  let nav = await util.getNav()
   const {classification_name} = req.body
 
   const addClassResult = await invModel.insertClassification(classification_name)
@@ -67,6 +69,18 @@ invCont.addNewClassification = async function(req, res) {
 
     res.redirect("/inv/newClassification")
   }
+}
+
+// Build the new vehicle view
+invCont.buildNewVehicle = async function(req, res) {
+  let nav = await util.getNav()
+  let classificationList = await util.buildClassificationList()
+  res.render("./inventory/new-vehicle", {
+    title: "Add Vehicle",
+    nav,
+    classificationList,
+    errors: null
+  })
 }
 
 module.exports = invCont 

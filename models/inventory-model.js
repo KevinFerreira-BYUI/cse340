@@ -55,4 +55,16 @@ async function insertClassification(classification_name) {
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryById, insertClassification};
+async function getExistClasificationName(classification_name) {
+  try{
+    const data = await pool.query(
+      `SELECT * FROM classification WHERE classification_name = $1`
+      [classification_name]
+    )
+    return data.rows
+  } catch(error){
+    console.error(`getExistClass ${error}`)
+  }
+}
+
+module.exports = {getClassifications, getInventoryByClassificationId, getInventoryById, insertClassification, getExistClasificationName};
