@@ -112,18 +112,6 @@ async function insertNewVehicle(
   }
 }
 
-// async function insertClassIdinVehicle(classification_id) {
-//   try{
-//     const data = await pool.query(
-//       `INSERT INTO inventory (classification_id) VALUES ($1)`,
-//       [classification_id]
-//     )
-//     return data.rows
-//   } catch (error){
-//     console.error(`insertClassIdinVehicle: ${error}`)
-//   }
-// }
-
 module.exports = {
   getClassifications, 
   getInventoryByClassificationId, 
