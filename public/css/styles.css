@@ -456,11 +456,11 @@ body{
     }
 
     /* .vehicle-text:invalid{
-      background-color: rgba(255, 6, 6, 0);
+      background-color: red;
     }
 
     .vehicle-text:valid{
-      background-color: rgba(10, 131, 175, 0);
+      background-color: yellow;
     } */
 
     textarea#inv_description{
