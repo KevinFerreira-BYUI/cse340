@@ -10,19 +10,21 @@ const logValidate = require("../utilities/account-validation")
 router.get(
     "/login",
      util.handleErrors(accountsController.buildLogin)
-    )
+)
 
-// router.post(
-//     "/login",
-//     logValidate.loginRules(),
-//     logValidate.checkLoginData,
-//     util.handleErrors(accountsController.accountLogin)
-// )
-
-router.post("/login", util.handleErrors(accountsController.accountLogin))
+router.post(
+    "/login",
+    logValidate.loginRules(),
+    logValidate.checkLoginData,
+    util.handleErrors(accountsController.accountLogin)
+)
 
 // Management route
-router.get("/management", util.handleErrors(accountsController.buildManagement))
+router.get(
+    "/", 
+    util.checkLogin,
+    util.handleErrors(accountsController.buildManagement)
+)
 
 // Register route
 router.get(
