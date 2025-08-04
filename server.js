@@ -36,6 +36,7 @@ app.use(session({
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cookieParser())
+app.use(util.checkJWTToken)
 
 // Express Messages Middleware
 app.use(require("connect-flash")())

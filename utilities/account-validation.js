@@ -1,4 +1,4 @@
-const util = require(".")
+const util = require("../utilities/index")
 const {body, validationRules, validationResult} = require("express-validator")
 const accountModel = require("../models/account-model")
 const validate = {}
@@ -68,26 +68,25 @@ validate.checkRegData = async (req, res, next) => {
 
 // Login data validation rules
 
-validate.loginRules = () =>{
-    return[
-        body("account_email")
-            .trim()
-            .isEmail()
-            .normalizeEmail()
-            .withMessage("Enter a valid email!"),
+// validate.loginRules = () =>{
+//     return[
+//         body("account_email")
+//             .trim()
+//             .isEmail()
+//             .normalizeEmail()
+//             .withMessage("Enter a valid email!"),
 
-        body("account_password")
-            .trim()
-            .notEmpty()
-            .withMessage("Enter the password!")
-    ]
-}
+//         body("account_password")
+//             .notEmpty()
+//             .withMessage("Enter the password!")
+//     ]
+// }
 
 validate.checkLoginData = async (req, res, next) => {
     let errors = []
     errors = validationResult(req)
     if (!errors.isEmpty()) {
-        let nav = util.getNav()
+        let nav = await util.getNav()
         res.render("account/login", {
             title: "Login",
             nav,
