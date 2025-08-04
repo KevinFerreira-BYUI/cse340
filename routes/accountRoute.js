@@ -16,7 +16,7 @@ router.post(
     "/login",
     logValidate.loginRules(),
     logValidate.checkLoginData,
-    util.handleErrors(accountsController.buildLogin)
+    util.handleErrors(accountsController.accountLogin)
 )    
 
 // Register route
