@@ -39,6 +39,7 @@ invCont.buildInventoryDetails = async function(req, res, next) {
 // build inv management
 invCont.buildManagement = async function(req, res, next) {
   let nav = await util.getNav()
+  const classificationSelect = await util.buildClassificationList()
   res.render("./inventory/management", {
     title: "Vehicle management",
     nav,
@@ -120,6 +121,16 @@ invCont.addNewVehicle = async function(req, res) {
   }
 
   res.redirect("/inv/newVehicle")
+}
+
+invCont.getInventoryJSON = async function(req, res, next) {
+  const classification_id = parseInt(req.params.classificationId)
+  const invData = await invModel.getInventoryByClassificationId(classification_id)
+  if (invData[0].inv_id){
+    return res.json(invData)
+  } else{
+    next(new Error ("No data returned"))
+  }
 }
 
 module.exports = invCont 

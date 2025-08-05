@@ -12,3 +12,15 @@
         <li><a href="/inv/newVehicle">Add new Vehicle</a></li>
     </ul>
 </section>
+
+<section class="inventory-management-select-container">
+    <h2><strong>Manage Inventory</strong></h2>
+    <p>Select some Classification</p>
+    <%- displayClassificationList %>
+    <div class="inventory-classification-table-container">
+        <table id="inventoryDisplay"></table>
+        <noscript>JavaScript must be enabled to use this page.</noscript>
+    </div>
+</section>
+
+<script src="../../public/js/inventory.js"></script>

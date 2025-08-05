@@ -33,6 +33,11 @@ router.post(
     newVehicleValidate.addVehicleRules(),
     newVehicleValidate.checkVehicleData,
     util.handleErrors(invController.addNewVehicle)
-)   
+)
+
+router.get(
+    "/getInventory/:classification_id",
+    util.handleErrors(invController.getInventoryJSON)
+)
 
 module.exports = router;
