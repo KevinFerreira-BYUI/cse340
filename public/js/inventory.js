@@ -1,7 +1,7 @@
 'use strict'
 
 
-let classificationList = document.getElementById("inventoryDisplay");
+let classificationList = document.getElementById("classificationList");
 classificationList.addEventListener("change", function() {
     let classification_id = classificationList.value;
     console.log(`classification List is: ${classification_id}`);
@@ -36,9 +36,11 @@ function buildInventoryList(data){
     data.forEach(function (element){
         console.log(`${element.inv_id}, ${element.inv_model}`);
         dataTable += `
-            <tr><td>${element.inv_make} ${element.inv_model}</td>
-            <td><a href="/inv/edit/${element.inv_id}" title="Click to update">Modify</a></td>
-            <td><a href='/inv/delete/${element.inv_id}' title='Click to delete'>Delete</a></td></tr>
+            <tr>
+                <td>${element.inv_make} ${element.inv_model}</td>
+                <td><a href="/inv/edit/${element.inv_id}" title="Click to update">Modify</a></td>
+                <td><a href='/inv/delete/${element.inv_id}' title='Click to delete'>Delete</a></td>
+            </tr>
         `;
     });
 
