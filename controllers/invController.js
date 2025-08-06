@@ -144,7 +144,6 @@ invCont.editInventoryView = async function(req, res, next) {
   const classificationSelect = await util.buildClassificationList(invItemData.classification_id)
   res.render("./inventory/edit-inventory", {
     title: `Edit ${invItemName}`,
-    // title: "Edit " + invItemName,
     nav,
     classificationSelect: classificationSelect,
     errors: null,
@@ -162,7 +161,70 @@ invCont.editInventoryView = async function(req, res, next) {
   }) 
 }
 
+invCont.updateInventory = async function(req, res) {
 
+  const {
+    classification_id,
+    inv_make, 
+    inv_model,
+    inv_description,  
+    inv_image,
+    inv_thumbnail,     
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color,
+    inv_id
+    
+  } = req.body
+
+  const updateResult = await invModel.updateInventory(
+    classification_id,
+    inv_make, 
+    inv_model,
+    inv_description,  
+    inv_image,
+    inv_thumbnail,     
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color,
+    inv_id
+  )
+
+  if (updateResult){
+    const itemName = `${updateResult.inv_make} ${updateResult.inv_model}`
+    req.flash(
+      "notice",
+      `The ${itemName} was successfully updated!`
+    )
+    res.redirect("/inv/")
+  } else{
+    const classificationSelect = await util.buildClassificationList(classification_id)
+    const itemName = `${updateResult.inv_make} ${updateResult.inv_model}`
+    req.flash(
+      "notice",
+      "Sorry, the insert failed."
+    )
+    res.status(501).render("inventory/edit-inventory", {
+      title: `Edit ${itemName}`,
+      nav,
+      classificationSelect: classificationSelect,
+      errors: null,
+      classification_id,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_miles,
+      inv_color,
+      inv_id
+    })
+  }
+}
 
 
 module.exports = invCont 

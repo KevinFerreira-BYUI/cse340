@@ -45,4 +45,11 @@ router.get(
     util.handleErrors(invController.editInventoryView)
 )
 
+router.post(
+    "/edit/",
+    newVehicleValidate.addVehicleRules(),
+    newVehicleValidate.checkEditData,
+    util.handleErrors(invController.editInventoryView)
+)
+
 module.exports = router;

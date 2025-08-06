@@ -1,6 +1,6 @@
 const util = require(".")
 const {body, validationRules, validationResult} = require("express-validator")
-const invodel = require("../models/inventory-model")
+const invModel = require("../models/inventory-model")
 const validate = {}
 
 validate.addClassRules = () => {
@@ -12,7 +12,7 @@ validate.addClassRules = () => {
             .isAlpha()
             .withMessage("Please enter a valid parameter")
             .custom(async (classification_name) => {
-                const existClassifiation = await invodel.getExistClasificationName(classification_name) 
+                const existClassifiation = await invModel.getExistClasificationName(classification_name) 
 
                 if (existClassifiation){
                     throw new Error (`The Classification ${classification_name} already exist, please enter an diferent classification`)
@@ -108,5 +108,38 @@ validate.checkVehicleData = async (req, res, next) => {
     }
     next()
 }
+
+validate.checkEditData = async (req, res, next) => {
+    const {classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color, inv_id} = req.body
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()){
+        let nav = await util.getNav()
+        let classificationList = await util.buildClassificationList()
+        const inv_id = parseInt(req.params.inv_id)
+        const itemData = await invModel.getInventoryById(inv_id)
+        const itemName = `${itemData.inv_make} ${itemData.inv_model}`
+        res.render("./inventory/edit-inventory", {
+            title: `Edit ${itemName}`,
+            nav,
+            errors,
+            classificationList,
+            classification_id,
+            inv_make,
+            inv_model,
+            inv_description,
+            inv_image,
+            inv_thumbnail,
+            inv_price,
+            inv_year,
+            inv_miles,
+            inv_color,
+            inv_id
+        })
+        return
+    }
+    next()
+}
+
 
 module.exports = validate
