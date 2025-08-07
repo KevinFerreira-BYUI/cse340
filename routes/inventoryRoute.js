@@ -49,7 +49,7 @@ router.post(
     "/edit/",
     newVehicleValidate.addVehicleRules(),
     newVehicleValidate.checkEditData,
-    util.handleErrors(invController.editInventoryView)
+    util.handleErrors(invController.updateInventory)
 )
 
 module.exports = router;
