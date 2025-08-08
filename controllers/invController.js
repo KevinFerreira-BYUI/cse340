@@ -226,5 +226,35 @@ invCont.updateInventory = async function(req, res) {
   }
 }
 
+invCont.buildDeleteView = async function (req, res, next) {
+  const nav = await util.getNav()
+  const inv_id = parseInt(req.params.inv_id)
+  const getInvItem = await invModel.getEspecificIdFromInventory(inv_id)
+
+  res.render("./inventory/delete", {
+    title: `Delete ${getInvItem.inv_make} ${getInvItem.inv_model}`,
+    nav,
+    errors: null,
+    inv_make: getInvItem.inv_make,
+    inv_model: getInvItem.inv_model,
+    inv_price: getInvItem.inv_price,
+    inv_year: getInvItem.inv_year,
+    inv_id: getInvItem.inv_id
+  })
+}
+
+invCont.deleteVehicle = async function (req, res, next) {
+  const inv_id = parseInt(req.body.inv_id)
+  const deleteItem = await invModel.deleteInventory(inv_id)
+
+  if (deleteItem) {
+    req.flash("notice","This vehicle was DELETED!")
+    res.redirect("/inv/")
+  } else{
+    req.flash("notice", "The vehicle wasn't deleted because an error")
+    res.redirect("/inv/delete/inv_id")
+  }
+}
+
 
 module.exports = invCont 

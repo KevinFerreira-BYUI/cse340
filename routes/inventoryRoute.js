@@ -52,4 +52,14 @@ router.post(
     util.handleErrors(invController.updateInventory)
 )
 
+router.get(
+    "/delete/:inv_id",
+    util.handleErrors(invController.buildDeleteView)
+)
+
+router.post(
+    "/delete/",
+    util.handleErrors(invController.deleteVehicle)
+)
+
 module.exports = router;

@@ -1,0 +1,45 @@
+<% if (title) { %>
+<h1 class="title-h1"><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+    <ul class="notice">
+        <% errors.array().forEach(error => { %>
+            <li><%= error.msg %></li>
+        <% }) %>
+    </ul>
+<% } %>
+
+
+<section class="new-vehicle-container">
+    <form action="/inv/delete" method="post">
+        <p><i>-- Check the informations before delete --</i></p>
+
+        <!-- Make -->
+        <label for="inv_make" class="vehicle-lbl">Make</label>
+        <label for="inv_make" class="vehicle-lbl-w"><%= locals.inv_make %></label>
+
+        <!-- Model -->
+        <label for="inv_model" class="vehicle-lbl">Model</label>
+        <label for="inv_model" class="vehicle-lbl-w"><%= locals.inv_model %></label>
+
+
+        <!-- Price -->
+        <label for="inv_price" class="vehicle-lbl">Price</label>
+        <label for="inv_price" class="vehicle-lbl-w"><%= locals.inv_price %></label>
+
+        <!-- Year -->
+        <label for="inv_year" class="vehicle-lbl">Year</label>
+        <label for="inv_year" class="vehicle-lbl-w"><%= locals.inv_year %></label>
+
+        <!-- inv_id -->
+        <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%= locals.inv_id %>" <% } %>>
+
+        <!-- Submit button -->
+        <input type="submit" class="submit-vehicle" value="Delete">
+    </form>
+</section>
