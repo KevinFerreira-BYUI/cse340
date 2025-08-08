@@ -35,7 +35,7 @@ async function getInventoryById(inv_id) {
       `SELECT * FROM public.inventory WHERE inv_id = $1`,
       [inv_id]
     )
-    return data.rows[0]
+    return data.rows
   } catch (error) {
     console.error(`getInventoryById ${error}`)
   }
@@ -112,6 +112,18 @@ async function insertNewVehicle(
   }
 }
 
+async function getEspecificIdFromInventory(inv_id) {
+  try{
+    const data = await pool.query(
+      `SELECT * FROM inventory WHERE inv_id = $1`,
+      [inv_id]
+    )
+    return data.rows[0]
+  } catch (error){
+
+  }
+}
+
 async function updateInventory(
   classification_id,
   inv_make, 
@@ -154,5 +166,6 @@ module.exports = {
   insertClassification, 
   getExistClasificationName,
   insertNewVehicle,
-  updateInventory
+  updateInventory,
+  getEspecificIdFromInventory
 };
