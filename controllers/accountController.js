@@ -12,6 +12,7 @@ const accountCont = {}
     res.render("./account/login", {
         nav,
         title: "Login",
+        login: "My Account",
         errors: null
     })
 }
@@ -49,8 +50,9 @@ accountCont.accountLogin = async function(req, res) {
       res.status(400).render("account/login", {
         title: "Login",
         nav,
+        login: "My Account",
         errors: null,
-        account_email,
+        account_email: accountData.account_email,
       })
     }
   } catch (error) {
