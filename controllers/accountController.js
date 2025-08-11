@@ -30,7 +30,7 @@ accountCont.accountLogin = async function(req, res) {
       title: "Login",
       nav,
       errors: null,
-      account_email,
+      account_email: accountData.account_email
     })
     return 
   }
@@ -63,12 +63,14 @@ accountCont.accountLogin = async function(req, res) {
 //Management view
 accountCont.buildManagement = async function(req, res, next) {
   let nav = await util.getNav()
+  const classificationSelect = await util.buildClassificationList()
   const welcomeMsg = req.flash("notice", "Welcome Bro!")
   res.render("./account/management", {
     title: "Management",
     nav,
     welcomeMsg,
     loginMsg: "You're logged in!",
+    classificationSelect,
     errors: null
   })
 }
@@ -125,6 +127,46 @@ accountCont.registerAccount = async function(req, res) {
       errors: null,
     })
   }
+}
+
+// build update account view
+accountCont.buildUpdateView = async function(req, res) {
+  let nav = await util.getNav()
+  const account_id = parseInt(req.params.account_id)
+  const data = await accountModel.getAccountInfosById(account_id)
+  res.render("./account/update", {
+    nav,
+    title: `Update ${data.account_firstname} ${data.account_lastname} Informations`,
+    account_firstname: data.account_firstname,
+    account_lastname: data.account_lastname,
+    account_email: data.account_email,
+    account_id: data.account_id,
+    errors: null
+  })
+}
+
+// update account
+accountCont.updateAccountInfo = async function(req, res, next) {
+  const {account_firstname, account_lastname, account_email, account_id} = req.body
+
+  const updateAccountInfo = await accountModel.updateAccountInfos(
+    account_firstname,
+    account_lastname,
+    account_email,
+    account_id
+  )
+
+  if (updateAccountInfo){
+    req.flash("notice", "Your account infos has been changed!")
+    res.redirect("/account/")
+  }
+}
+
+// log out process
+accountCont.logout = async function(req, res) {
+  res.clearCookie("jwt")
+  req.flash("notice", "You've been loged out!")
+  res.redirect("/")
 }
 
 

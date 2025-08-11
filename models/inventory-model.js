@@ -120,7 +120,7 @@ async function getEspecificIdFromInventory(inv_id) {
     )
     return data.rows[0]
   } catch (error){
-
+    console.error(error)
   }
 }
 

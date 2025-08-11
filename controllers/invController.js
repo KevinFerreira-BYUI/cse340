@@ -40,7 +40,7 @@ invCont.buildInventoryDetails = async function(req, res, next) {
 invCont.buildManagement = async function(req, res, next) {
   let nav = await util.getNav()
   const classificationSelect = await util.buildClassificationList()
-  res.render("./inventory/management", {
+  res.render("./account/management", {
     title: "Vehicle management",
     nav,
     errors: null,
@@ -227,7 +227,7 @@ invCont.updateInventory = async function(req, res) {
 }
 
 invCont.buildDeleteView = async function (req, res, next) {
-  const nav = await util.getNav()
+  let nav = await util.getNav()
   const inv_id = parseInt(req.params.inv_id)
   const getInvItem = await invModel.getEspecificIdFromInventory(inv_id)
 

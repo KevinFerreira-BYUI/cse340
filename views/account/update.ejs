@@ -1,0 +1,53 @@
+<% if (title) { %>
+<h1 class="title-h1"><%= title %></h1>
+<% } else {
+  res.redirect('/')
+} %>
+
+<%- messages() %>
+
+    <section class="section-form">
+        <form class="form-container" action="/account/update" method="post">
+
+            <!-- first name -->
+            <label class="label-login" for="firstName">First Name:</label>
+
+            <input class="input-login" type="text" id="loginEmail" name="account_firstname" required value="<%= locals.account_firstname %>">
+
+            <!-- last name -->
+            <label class="label-login" for="lastName">Last Name:</label>
+
+            <input class="input-login" type="text" id="UpdateLastName" name="account_lastname" required value="<%= locals.account_lastname %>">
+
+            <!-- email -->
+            <label class="label-login" for="email">Email:</label>
+
+            <input class="input-login" type="email" id="UpdateEmail" name="account_email" required value="<%= locals.account_email %>">
+
+            <!-- account_id -->
+            <input type="hidden" name="account_id" value="<%= locals.account_id %>">
+
+            <!-- submit -->
+            <input class="input-submit-login" type="submit" name="updateInfos" id="updateInfos" value="Update">
+
+        </form>
+    </section>
+
+    <section class="section-form">
+        <form class="form-container" action="" method="post">
+
+            <h2>Update Password</h2>
+            <p><i>Passwords must be al least 12 characters and contain at least 1 number, 1 capital letter and 1 special character</i></p>
+
+            <!-- password -->
+            <label class="label-login" for="password">Password:</label>
+
+            <input class="input-login" type="password" id="LoginPassword" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$" value="<%= locals.account_password %>">
+
+            <button class="show-password-btn">Show password</button>
+
+            <!-- submit -->
+            <input class="input-submit-login" type="submit" name="changePassword" value="Change Password">
+
+        </form>
+    </section>

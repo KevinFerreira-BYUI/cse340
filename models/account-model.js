@@ -42,4 +42,29 @@ async function getAccountByEmail(account_email) {
   }
 }
 
-module.exports = {registerAccount, checkExistingEmail, checkLogIn, getAccountByEmail}
+async function getAccountInfosById(account_id) {
+  try{
+    const data = await pool.query(
+      `SELECT * FROM account WHERE account_id = $1`,
+      [account_id]
+    )
+    return data.rows[0]
+  } catch(error){
+    console.error(error)
+  }
+}
+
+async function updateAccountInfos(account_firstname, account_lastname, account_email, account_id) {
+  try{
+    data = await pool.query(
+      `UPDATE account 
+      SET account_firstname = $1, account_lastname = $2, account_email = $3 WHERE account_id = $4`,
+      [account_firstname, account_lastname, account_email, account_id]
+    )
+    return data
+  } catch(error){
+    console.error(error)
+  }
+}
+
+module.exports = {registerAccount, checkExistingEmail, checkLogIn, getAccountByEmail, updateAccountInfos, getAccountInfosById}
