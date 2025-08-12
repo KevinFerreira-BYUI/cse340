@@ -64,11 +64,9 @@ accountCont.accountLogin = async function(req, res) {
 accountCont.buildManagement = async function(req, res, next) {
   let nav = await util.getNav()
   const classificationSelect = await util.buildClassificationList()
-  const welcomeMsg = req.flash("notice", "Welcome Bro!")
   res.render("./account/management", {
     title: "Management",
     nav,
-    welcomeMsg,
     loginMsg: "You're logged in!",
     classificationSelect,
     errors: null

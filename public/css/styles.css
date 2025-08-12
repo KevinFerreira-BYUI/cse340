@@ -487,6 +487,77 @@ body{
       font-size: 1.2rem;
      } 
 
+     /* Management view */
+     .management-container{
+      padding: 10px;
+     }
+
+     .inventory-management-select-container h2,
+     .inventory-management-select-container p{
+      padding: 10px;
+     }
+
+     .inventory-classification-table-container {
+      max-width: 800px;
+      margin: 20px auto;
+      overflow-x: auto;
+    }
+
+    #inventoryDisplay {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--head-font);
+    }
+
+    #inventoryDisplay thead {
+      background-color: var(--color5);
+      color: var(--color3);
+    }
+
+    #inventoryDisplay th,
+    #inventoryDisplay td {
+      padding: 10px 15px;
+      text-align: left;
+      border-bottom: 1px solid var(--color5);
+      font-family: var(--text-font);
+    }
+
+    #inventoryDisplay tbody tr:nth-child(even) {
+      background-color: var(--color3);
+    }
+
+    #inventoryDisplay tbody tr:hover {
+      background-color: var(--color4);
+    }
+
+    #inventoryDisplay a {
+      padding: 5px 10px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-weight: 600;
+      color: var(--color5);
+    }
+
+    #inventoryDisplay a[href*="edit"] {
+      background-color: var(--color1);
+    }
+
+    #inventoryDisplay a[href*="edit"]:hover {
+      background-color: var(--color2);
+      color: var(--color3);
+    }
+
+    #inventoryDisplay a[href*="delete"] {
+      background-color: #fc0a22;
+    }
+
+    #inventoryDisplay a[href*="delete"]:hover {
+      background-color: #a71d2a;
+    }
+
+
+
 /* footer */
   .copyright{
     font-family: var(--head-font);

@@ -28,7 +28,7 @@ function buildInventoryList(data){
 
     let dataTable = `
         <thead>
-            <tr><th>Vehicle Name</th><td>nbsp;</td><td>nbsp;</td></tr>
+            <tr><th>Vehicle Name</th><td>Modify Vehicle</td><td>Delete Vehicle</td></tr>
         </thead>
         <tbody>
     `;
