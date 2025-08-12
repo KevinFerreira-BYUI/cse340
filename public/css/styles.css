@@ -52,6 +52,10 @@ body{
     width: 100%;
   }
 
+  #tools{
+    padding-bottom: 10px;
+  }
+
   .header-container{
     width: 100%;
     display: grid;
@@ -503,59 +507,97 @@ body{
       overflow-x: auto;
     }
 
-    #inventoryDisplay {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: var(--head-font);
-    }
+      #inventoryDisplay {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: var(--head-font);
+      }
 
-    #inventoryDisplay thead {
-      background-color: var(--color5);
-      color: var(--color3);
-    }
+      #inventoryDisplay thead {
+        background-color: var(--color5);
+        color: var(--color3);
+      }
 
-    #inventoryDisplay th,
-    #inventoryDisplay td {
-      padding: 10px 15px;
-      text-align: left;
-      border-bottom: 1px solid var(--color5);
-      font-family: var(--text-font);
-    }
+      #inventoryDisplay th,
+      #inventoryDisplay td {
+        padding: 10px 15px;
+        text-align: left;
+        border-bottom: 1px solid var(--color5);
+        font-family: var(--text-font);
+      }
 
-    #inventoryDisplay tbody tr:nth-child(even) {
-      background-color: var(--color3);
-    }
+      #inventoryDisplay tbody tr:nth-child(even) {
+        background-color: var(--color3);
+      }
 
-    #inventoryDisplay tbody tr:hover {
-      background-color: var(--color4);
-    }
+      #inventoryDisplay tbody tr:hover {
+        background-color: var(--color4);
+      }
 
-    #inventoryDisplay a {
-      padding: 5px 10px;
-      text-decoration: none;
-      border-radius: 4px;
-      font-size: 0.9em;
-      font-weight: 600;
-      color: var(--color5);
-    }
+      #inventoryDisplay a {
+        padding: 5px 10px;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 0.9em;
+        font-weight: 600;
+        color: var(--color5);
+      }
 
-    #inventoryDisplay a[href*="edit"] {
-      background-color: var(--color1);
-    }
+      #inventoryDisplay a[href*="edit"] {
+        background-color: var(--color1);
+      }
 
-    #inventoryDisplay a[href*="edit"]:hover {
-      background-color: var(--color2);
-      color: var(--color3);
-    }
+      #inventoryDisplay a[href*="edit"]:hover {
+        background-color: var(--color2);
+        color: var(--color3);
+      }
 
-    #inventoryDisplay a[href*="delete"] {
-      background-color: #fc0a22;
-    }
+      #inventoryDisplay a[href*="delete"] {
+        background-color: #fc0a22;
+      }
 
-    #inventoryDisplay a[href*="delete"]:hover {
-      background-color: #a71d2a;
-    }
+      #inventoryDisplay a[href*="delete"]:hover {
+        background-color: #a71d2a;
+      }
 
+      .management-link-list li a{
+        text-decoration: none;
+      }
+      
+      .update-infos-container{
+        padding: 5px;
+        width: 300px;
+        background-color: var(--color2);
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      .update-infos-container:hover{
+        transform: translateY(-4%);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+      }
+
+      .update-infos-container a{
+        color: var(--color3);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .mrg-btm{
+        margin-bottom: 30px;
+      }
+
+      .update-h2{
+        font-family: var(--head-font);
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--color3);
+      }
+
+      .explanation-p{
+        font-size: 1.2rem;
+      }
 
 
 /* footer */
@@ -660,6 +702,13 @@ body{
     .input-login{
       font-size: 1rem;
     }
+
+    .up-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
 
   }
 

@@ -56,8 +56,12 @@ router.get(
 // update action post
 router.post(
     "/update/",
-    //util.handleErrors(accountsController.updateAccountInfo)
-    accountsController.updateAccountInfo
+    util.handleErrors(accountsController.updateAccountInfo),
+)
+
+router.post(
+    "/update-password",
+    util.handleErrors(accountsController.updatePassword)
 )
 
 module.exports = router

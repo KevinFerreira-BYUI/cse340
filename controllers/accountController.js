@@ -160,6 +160,40 @@ accountCont.updateAccountInfo = async function(req, res, next) {
   }
 }
 
+// update password
+accountCont.updatePassword = async function(req, res) {
+  const account_id = parseInt(req.body.account_id)
+  const account_password = req.body.account_password
+  let nav = util.getNav()
+  const data = await accountModel.getAccountInfosById(account_id)
+
+  let hashedPassword
+  try{
+    hashedPassword = bcrypt.hashSync(account_password, 10)
+  } catch (error){
+    console.log(error)
+    req.flash("notice", "Error at changing password, try again")
+    res.render("./account/update", {
+      nav,
+      title: `Update ${data.account_firstname} ${data.account_lastname} Informations`,
+      account_firstname: data.account_firstname,
+      account_lastname: data.account_lastname,
+      account_email: data.account_email,
+      account_id: data.account_id,
+      errors: null
+    })
+  }
+
+  const updatePassword = await accountModel.updatePassword(hashedPassword, account_id)
+  if (updatePassword){
+    req.flash("notice", "Your Password has been changed!!")
+    res.redirect("/account/")
+  } else{
+    req.flash("notice", "Your passwod hasn't been changed. Try again!")
+    res.redirect("/account/")
+  }
+}
+
 // log out process
 accountCont.logout = async function(req, res) {
   res.clearCookie("jwt")

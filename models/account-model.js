@@ -67,4 +67,16 @@ async function updateAccountInfos(account_firstname, account_lastname, account_e
   }
 }
 
-module.exports = {registerAccount, checkExistingEmail, checkLogIn, getAccountByEmail, updateAccountInfos, getAccountInfosById}
+async function updatePassword(account_password, account_id) {
+  try{
+    const data = pool.query(
+      `UPDATE account SET account_password = $1 WHERE account_id = $2`,
+      [account_password, account_id]
+    )
+    return data
+  } catch(error){
+    console.error(error)
+  }
+}
+
+module.exports = {registerAccount, checkExistingEmail, checkLogIn, getAccountByEmail, updateAccountInfos, getAccountInfosById, updatePassword}
