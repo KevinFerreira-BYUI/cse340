@@ -599,6 +599,10 @@ body{
         font-size: 1.2rem;
       }
 
+      #showPass:hover{
+        cursor: pointer;
+        background-color: var(--color1);
+      }
 
 /* footer */
   .copyright{
