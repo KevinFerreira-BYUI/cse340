@@ -1,7 +1,7 @@
 const { render } = require("ejs")
 const invModel = require("../models/inventory-model")
 const util = require("../utilities/")
-
+const path = require("path")
 const invCont = {}
 
 /* ***************************
@@ -253,6 +253,20 @@ invCont.deleteVehicle = async function (req, res, next) {
   } else{
     req.flash("notice", "The vehicle wasn't deleted because an error")
     res.redirect("/inv/delete/inv_id")
+  }
+}
+
+// controler to download the image from vehicle detail
+invCont.downloadImg = async function(req, res) {
+  try{
+    const inv_id = req.params.inv_id
+    const vehicleImg = await invModel.getImgByInvId(inv_id)
+    const FullPath = path.join(__dirname, "..", "public", vehicleImg.inv_image)
+
+    res.download(FullPath, path.basename(vehicleImg.inv_image))
+
+  } catch(error){
+    console.error(error)
   }
 }
 

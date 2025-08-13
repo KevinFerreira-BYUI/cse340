@@ -62,4 +62,10 @@ router.post(
     util.handleErrors(invController.deleteVehicle)
 )
 
+// download image from vehicle details
+router.get(
+    "/download-image/:inv_id",
+    util.handleErrors(invController.downloadImg)
+)
+
 module.exports = router;

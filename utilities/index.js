@@ -76,6 +76,7 @@ Util.buildInventoryDetailsGrid = async function(data) {
                         <p class="vehicle-description"><strong>Description: </strong>${vehicle.inv_description}</p>
                         <p class="vehicle-color"><strong>Color: </strong>${vehicle.inv_color}</p>
                         <p class="vehicle-miles"><strong>Miles: </strong>${new Intl.NumberFormat('en-US').format(vehicle.inv_miles)}</p>
+                        <button class="download-btn" id="downloadBtn" data-id="${vehicle.inv_id}">Download Image</button>
                       </div>
                     </section>`
   } else {
